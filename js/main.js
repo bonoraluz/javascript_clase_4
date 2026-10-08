@@ -10,9 +10,9 @@ alert("En esta versión, perdés una vida si empatás también. En la consola ap
 let vidasUsuario = 2;
 let vidasPC = 2;
 
-const elecciones=["papel"];
-elecciones.push("tijera");
-elecciones.unshift("piedra");
+const elecciones = ["piedra", "papel", "tijera", "lagarto", "Spock"];
+elecciones.splice(3, 1);
+elecciones.pop();
 
 
 console.log("¿Está tijera?", elecciones.includes("tijera"));
@@ -27,7 +27,7 @@ let eleccionPC = 1;
 // FUNCIÓN 1
 // Muestra las opciones disponibles
 
-function mostrarOpciones(usuario) {
+function mostrarOpciones(usuario,elecciones) {
 
     console.log(usuario + ", tus opciones son:");
     for (let eleccion of elecciones){
@@ -105,16 +105,16 @@ function mostrarResultadoFinal(usuario, vidasUsuario, vidasPC) {
 
 // Comienza el juego
 
-mostrarOpciones(usuario);
+mostrarOpciones(usuario,elecciones);
 
 while (vidasPC !== 0 && vidasUsuario !== 0) {
 
     const eleccionUsuario = Number(
-        prompt("Escriba aquí su opción: 0, 1, 2")
+        prompt("Elija una opción: 0 = piedra, 1 = papel, 2 = tijera")
     );
-    const indiceUsuario=eleccionUsuario -1;
+
     const resultado = determinarGanador(
-        indiceUsuario,
+        eleccionUsuario,
         eleccionPC
     );
 
